@@ -1,17 +1,23 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+ import {
+  AtSymbolIcon,
+  KeyIcon,
+  ExclamationCircleIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
+ import { useFormState, useFormStatus } from "react-dom";
 import { handleSignUp } from "@/lib/cognitoActions";
 import Link from "next/link";
 import { Button } from "@/app/components/button";
-// import SendVerificationCode from "./send-verification-code-form"; ????????????????????????
-
+ 
 export default function SignUpForm() {
   const [errorMessage, dispatch] = useFormState(handleSignUp, undefined);
   return (
-    <form action={dispatch} className="space-y-3 text-black">
+    <form action={dispatch} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className={`  mb-3 text-2xl`}>
+        <h1 className={`mb-3 text-2xl`}>
           Please create an account.
         </h1>
         <div className="w-full">
@@ -31,8 +37,8 @@ export default function SignUpForm() {
                 minLength={4}
                 placeholder="Enter your name"
                 required
-                  autoComplete="Your name"
               />
+              <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div className="mt-4">
@@ -50,8 +56,8 @@ export default function SignUpForm() {
                 name="email"
                 placeholder="Enter your email address"
                 required
-                autoComplete="Your email"
-                />
+              />
+              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div className="mt-4">
@@ -70,8 +76,8 @@ export default function SignUpForm() {
                 placeholder="Enter password"
                 required
                 minLength={6}
-                  autoComplete="current-password"
               />
+              <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
         </div>
@@ -92,6 +98,7 @@ export default function SignUpForm() {
           >
             {errorMessage && (
               <>
+                <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
                 <p className="text-sm text-red-500">{errorMessage}</p>
               </>
             )}
@@ -107,7 +114,7 @@ function SignUpButton() {
 
   return (
     <Button className="mt-4 w-full" aria-disabled={pending}>
-      Create account
+      Create account <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
     </Button>
   );
 }
