@@ -1,23 +1,23 @@
 "use client";
 
- import {
+import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
- import { useFormState, useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { handleSignUp } from "@/lib/cognitoActions";
 import Link from "next/link";
 import { Button } from "@/app/components/button";
- 
+
 export default function SignUpForm() {
   const [errorMessage, dispatch] = useFormState(handleSignUp, undefined);
   return (
     <form action={dispatch} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className={`mb-3 text-2xl`}>
+        <h1 className={` mb-3 text-2xl`}>
           Please create an account.
         </h1>
         <div className="w-full">

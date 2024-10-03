@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
- import ConfigureAmplifyClientSide from "./amplify-cognito-config";
+import ConfigureAmplifyClientSide from "./amplify-cognito-config";
 
 export const metadata: Metadata = {
   title: "Next.js Cognito Authentication",
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
+      <body className={`antialiased`}>
         <>
           <ConfigureAmplifyClientSide />
           {children}
